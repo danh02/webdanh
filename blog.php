@@ -140,7 +140,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div><!-- .comments-count -->
                     </footer><!-- .entry-footer -->
                 </div><!-- .content-wrap -->
-                <div class="comments-form">
+                
+                <div class="content-area">
+                    <div class="post-comments">
+                        
+                        <h3 class="comments-title">Comments</h3>
+                        <?php
+                            $new_comment->n_blog_post_id = $_GET['id'];
+                            $rss_comment = $new_comment->read_single_blog_post();
+                            $num_comment = $rs_comment->rowCount();
+                            ?>
+                        <ol class="comment-list">
+                            <?php
+                                    while ($rows = $rss_comment->fetch()) {
+                                        if ($rows['n_blog_comment_parent_id'] == 0) {
+                                    ?>
+                            <li class="comment">
+                                <div class="comment-body flex justify-content-between">
+                                    <figure class="comment-author-avatar">
+                                        <img src="images/user-1.jpg" alt="user">
+                                    </figure><!-- .comment-author-avatar -->
+
+                                    <div class="comment-wrap">
+                                        <div class="comment-author flex flex-wrap align-items-center">
+                                            <span class="fn">
+                                                <a href="#"><?php echo $rows['v_comment_author'] ?></a>
+                                            </span><!-- .fn -->
+
+                                            <span class="comment-meta">
+                                                <a href="#"><?php  echo $rows['d_date_created'] ?></a>
+                                            </span><!-- .comment-meta -->
+
+                                            <!-- .reply -->
+                                        </div><!-- .comment-author -->
+
+                                        <p><?php //echo $rows['v_comment'] ?> </p>
+
+                                    </div><!-- .comment-wrap -->
+                                </div><!-- .comment-body -->
+                            </li><!-- .comment -->
+                        <?php //}} ?>
+                        </ol><!-- .comment-list -->
+                    </div><!-- .post-comments -->
+                    <div class="comments-form">
                         <div class="comment-respond">
                             <h3 class="comment-reply-title">Leave a reply</h3>
 
@@ -154,50 +196,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         </div><!-- .comment-respond -->
                     </div>
-                <div class="content-area">
-                    <div class="post-comments">
-                        
-                        <h3 class="comments-title">Comments</h3>
-                        <?php
-                            $new_comment->n_blog_post_id = $_GET['id'];
-                            $rss_comment = $new_comment->read_single_blog_post();
-                            //$num_comment = $rs_comment->rowCount();
-                            ?>
-                        <ol class="comment-list">
-                            <?php
-                                    //while ($rows = $rss_comment->fetch()) {
-                                        //if ($rows['n_blog_comment_parent_id'] == 0) {
-                                    ?>
-                            <li class="comment">
-                                <div class="comment-body flex justify-content-between">
-                                    <figure class="comment-author-avatar">
-                                        <img src="images/user-1.jpg" alt="user">
-                                    </figure><!-- .comment-author-avatar -->
-
-                                    <div class="comment-wrap">
-                                        <div class="comment-author flex flex-wrap align-items-center">
-                                            <span class="fn">
-                                                <a href="#"><?php //echo $rows['v_comment_author'] ?></a>
-                                            </span><!-- .fn -->
-
-                                            <span class="comment-meta">
-                                                <a href="#"><?php // echo $rows['d_date_created'] ?></a>
-                                            </span><!-- .comment-meta -->
-
-                                            <div class="reply">
-                                                <a href="#">Reply</a>
-                                            </div><!-- .reply -->
-                                        </div><!-- .comment-author -->
-
-                                        <p><?php //echo $rows['v_comment'] ?> </p>
-
-                                    </div><!-- .comment-wrap -->
-                                </div><!-- .comment-body -->
-                            </li><!-- .comment -->
-                        <?php //}} ?>
-                        </ol><!-- .comment-list -->
-                    </div><!-- .post-comments -->
-
                     <!-- .comments-form -->
                 </div><!-- .content-area -->
             </div><!-- .col -->
