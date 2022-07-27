@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <?php
                             $new_comment->n_blog_post_id = $_GET['id'];
                             $rss_comment = $new_comment->read_single_blog_post();
-                            $num_comment = $rs_comment->rowCount();
+                            $num_comment = $rss_comment->rowCount();
                             ?>
                         <ol class="comment-list">
                             <?php
