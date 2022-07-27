@@ -174,12 +174,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             <!-- .reply -->
                                         </div><!-- .comment-author -->
 
-                                        <p><?php //echo $rows['v_comment'] ?> </p>
+                                        <p><?php echo $rows['v_comment'] ?> </p>
 
                                     </div><!-- .comment-wrap -->
                                 </div><!-- .comment-body -->
                             </li><!-- .comment -->
-                        <?php //}} ?>
+                        <?php }} ?>
                         </ol><!-- .comment-list -->
                     </div><!-- .post-comments -->
                     <div class="comments-form">
