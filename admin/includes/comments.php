@@ -3,7 +3,7 @@ class comment{
 
 	//DB Stuff
 	private $conn;
-	private $table = "blog_comment";
+	private $table = "blog_comments";
 
 	//Blog Comment Properties
 	public $n_blog_comment_id;
